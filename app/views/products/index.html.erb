@@ -7,6 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Price</th>
+      <th>Stripe Product Id</th>
       <th>Description</th>
       <th>Payment</th>
       <th>Sales Count</th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= number_to_currency(product.price/100) %></td>
+        <td><%= product.stripe_product_id %></td>
         <td><%= product.description %></td>
         <td><%= button_to "Buy now!", checkout_create_path, params: {id:product.id}, remote: true %></td>
         <td><%= product.sales_count %></td>
