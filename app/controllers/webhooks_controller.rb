@@ -24,7 +24,7 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       session = event.data.object
-      @product = Product.find_by(price: session.amount.total)
+      @product = Product.find_by(price: session.amount_total)
       @product.increment!(:sales_count)
     end
 
