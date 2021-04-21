@@ -26,7 +26,6 @@ class WebhooksController < ApplicationController
       session = event.data.object
       @product = Product.find_by(price: session.amount.total)
       @product.increment!(:sales_count)
-      end
     end
 
     render json: { message: 'success' }
