@@ -1,8 +1,15 @@
 <h1>Success</h1>
 <br><hr>
-Product: <%= @session_with_expand.line_items.data[0].description %>
-<br>
+<%# Product: <%= @session_with_expand.line_items.data[0] %>
 Amount: <%= number_to_currency(@session_with_expand.amount_total/100) %>
 <br>
 Checkout status: <%= @session_with_expand.payment_status %>
 <hr>
+<% @session_with_expand.line_items.data.each do |line_item| %>
+  Product: <%= line_item.description %>
+  <br>
+  Unit Amount: <%= number_to_currency(line_item.price.unit_amount/100) %>
+  <br>
+  <% end %>
+  
+<br>
