@@ -32,6 +32,12 @@
       <%= cart_item.name %>
       <%= link_to "x", remove_from_cart_path(cart_item), method: :delete %>
     <% end %>
+    <% if @cart.present? %>
+      <br>    
+      <%= @cart.collect { |item| item.to_builder.attributes! } %>
+      <br>
+      <%= button_to "Buy now!", checkout_create_path, remote: true, data: { disable_with: "Connecting..."} %>
+    <% end %>
     <hr>
     <%= yield %>
   </body>
